@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%	Name: "Signal analysis template"
-%%	File name: marcoteran_datafusion_art
+%%	File name: signalanalysis_template_main
 %%
 %%	Compiler: PdfLaTex
 %%
@@ -10,7 +10,7 @@
 
 % *** LANGUAGE UTILITY PACKAGES ***
 \usepackage[utf8]{inputenc} % Required for including letters with accents
-\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+%\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 %\usepackage[english]{babel}
 \usepackage[spanish]{babel}
 % *** MISC UTILITY PACKAGES ***
@@ -28,7 +28,8 @@
 \usetikzlibrary{fit}					% fitting shapes to coordinates
 \usetikzlibrary{backgrounds}	% drawing the background after the foreground
 \pgfplotsset{compat=1.13}
-
+\usepackage{listings}					% Coding
+\usepackage[framed,numbered,autolinebreaks,useliterate]{./mcode}
 
 \newcommand{\mx}[1]{\mathbf{\bm{#1}}} % Matrix command
 \newcommand{\vc}[1]{\mathbf{\bm{#1}}} % Vector command
