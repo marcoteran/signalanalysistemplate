@@ -1,0 +1,350 @@
+%----------------------------------------------------------------------------------------
+%	THEOREM STYLES
+%----------------------------------------------------------------------------------------
+\newcommand{\intoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
+\newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
+\newcommand{\intff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
+\newtheorem{notation}{Notación}[chapter]
+
+% Boxed/framed environments
+\newtheoremstyle{ocrenumbox}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{ocre}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+	\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+\newtheoremstyle{blacknumex}% Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% Body font
+{} % Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily{\tiny\ensuremath{\blacksquare}}\nobreakspace\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+	\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+\newtheoremstyle{blacknumbox} % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% Body font
+{}% Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+	\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+% Non-boxed/non-framed environments
+\newtheoremstyle{ocrenum}% % Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{ocre}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+	\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+\makeatother
+
+% url environment
+\DeclareUrlCommand{\url}{%
+	\def\UrlFont{\color{ocre}\normalfont}%      Adding a little color 
+	%\def\UrlLeft##1\UrlRight{\underline{##1}}%  Underlining the url
+}
+
+
+% Non-boxed/non-framed environments
+\newtheoremstyle{rednum}% % Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{ocre}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+	\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+\makeatother
+
+% Defines the theorem text style for each type of theorem to one of the three styles above
+\newcounter{dummy} 
+\numberwithin{dummy}{section}
+
+\theoremstyle{ocrenumbox}
+\newtheorem{theoremeT}[dummy]{Teorema}
+\newtheorem{exampleT}{Ejemplo}[chapter]
+
+
+\theoremstyle{blacknumex}
+\theoremstyle{blacknumbox}
+\newtheorem{vocabulary}{Vocabulary}[chapter]
+\newtheorem{definitionT}{Definición}[section]
+\newtheorem{corollaryT}[dummy]{Corolario}
+\newtheorem{problem}{Problema}[chapter]
+\newtheorem{exerciseT}{Ejercicio}[chapter]
+
+\theoremstyle{ocrenum}
+\newtheorem{proposition}[dummy]{Proposition}
+
+
+%----------------------------------------------------------------------------------------
+%	DEFINITION OF COLORED BOXES
+%----------------------------------------------------------------------------------------
+
+\RequirePackage[framemethod=default]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
+
+% Theorem box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+backgroundcolor=black!5,
+linecolor=ocre,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+innerbottommargin=5pt]{tBox}
+
+% Exercise box	  
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=darkred!10,
+linecolor=darkred,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt]{eBox}	
+
+% Example box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=ocre,
+backgroundcolor=ocre!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{ejBox}
+
+% Definition box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=ocre,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=0pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=0pt]{dBox}	
+
+% Corollary box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=black!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{cBox}
+
+% Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
+\newenvironment{theorem}{\begin{tBox}\begin{theoremeT}}{\end{theoremeT}\end{tBox}}
+\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{ocre}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				  
+
+\newenvironment{example}{\begin{ejBox}\begin{exampleT}}{\hfill{\color{ocre}\tiny\ensuremath{\blacksquare}}\end{exampleT}\end{ejBox}}		
+
+\newenvironment{definition}{\begin{dBox}\begin{definitionT}}{\end{definitionT}\end{dBox}}	
+\newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}	
+
+%----------------------------------------------------------------------------------------
+%	REMARK ENVIRONMENT
+%----------------------------------------------------------------------------------------
+\input{./structure/remarkenv}
+%----------------------------------------------------------------------------------------
+%	SECTION NUMBERING IN THE MARGIN
+%----------------------------------------------------------------------------------------
+\input{./structure/sectionnumbering}
+%----------------------------------------------------------------------------------------
+%	PART HEADINGS
+%----------------------------------------------------------------------------------------
+\input{./structure/partheading}
+%----------------------------------------------------------------------------------------
+%	CHAPTER HEADINGS
+%----------------------------------------------------------------------------------------
+\input{./structure/chapterheading}
+%----------------------------------------------------------------------------------------
+%	PAGE HEADINGS
+%----------------------------------------------------------------------------------------
+\input{./structure/pageheaders}
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%	CONTENT TABLES
+%----------------------------------------------------------------------------------------
+\input{./structure/contenttables}
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS IN THE DOCUMENTS
+%----------------------------------------------------------------------------------------
+\input{./structure/hyperlinks}
+
+\newenvironment{bookboxed}[1]
+{\begin{center}
+		#1\\[1ex]
+		\begin{tabular}{|p{0.9\textwidth}|}
+			\hline\\
+		}
+		{ 
+			\\\\\hline
+		\end{tabular} 
+	\end{center}
+}
+
+%\newenvironment{chapterquote}[2][Anonimo]{\noindent Hello, #1}{\noindent Bye now! \#2\\
+
+\DeclareDocumentEnvironment{chapterquote}{O {cake} m }
+{ 
+	\begin{mdframed}[backgroundcolor=gray!1,fontcolor=black!75, linewidth=0pt]\itshape
+	\begin{flushright}
+}
+{
+\end{flushright}
+\end{mdframed}
+\vspace{-22pt}
+\begin{flushright}{\bfseries #1}, {\small #2} \end{flushright}
+}
+
+\newenvironment{bproof}[1][\proofname]{%
+	\proof[\ttfamily \scshape \large #1]%
+}{\endproof}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+	\pushQED{\qed}%
+	\normalfont \topsep6\p@\@plus6\p@\relax
+	\trivlist
+	\item[%
+	\hskip\labelsep
+	%\normalfont\bfseries % was \itshape
+	\ttfamily \scshape \large
+	#1%
+	\@addpunct{.}% remove this if you don't want punctuation
+	]\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
+\let\qed\relax % avoid a warning
+\DeclareRobustCommand{\qed}{%
+	\ifmmode \mathqed
+	\else
+	\leavevmode\unskip\penalty\@M\hbox{}\nobreak\hspace{.5em minus .1em}% was \hfill
+	\hfill \hbox{\qedsymbol}%
+	\fi
+}
+\makeatother
+
+\let\oldproof\proof
+\renewcommand{\proof}{\color{black!75}\oldproof}
+
+
+%Numbered environment
+\newcounter{example}[section]
+\newenvironment{bexample}[1][]{\refstepcounter{example}\par\medskip
+	\noindent \textbf{Example~\theexample. #1} \rmfamily}{\medskip}
+
+%Numbered environment defined with Newtheorem
+
+\newtheorem{SampleEnv}{Sample Environment}[section]
+
+
+
+\newtheorem*{bhistoricenv}{{\footnotesize Perpectiva histórica} \vspace{2pt} \\}
+\DeclareDocumentEnvironment{bhistory}{O {\unskip} m }
+{
+
+\renewcommand\windowpagestuff{\centering\includegraphics[width=2.4cm]{#2}}
+\opencutleft
+
+\begin{mdframed}[backgroundcolor=gray!3,fontcolor=black!75,linewidth=0pt]
+\vspace{-10pt}
+\begin{bhistoricenv} 
+\par 
+\vspace{15pt}
+\begin{cutout}{3}{4pt}{\dimexpr\linewidth-3.8cm\relax}{9}
+
+\noindent \textbf{#1}
+}%
+{
+
+\end{cutout}
+\end{bhistoricenv}\end{mdframed}
+}
+
+
+
+	
+\newtheorem{thm}{Imagen en texto}
+
+\newenvironment{hello}[1][world]{\noindent Hello #1, }{Bye now!\\}
+
+\DeclareDocumentEnvironment{envb}{O {cake} m }
+{
+	\begin{wrapfigure}{r}{0.4\textwidth}
+		\vspace{-20pt}
+		\begin{center}
+			\includegraphics[width=0.38\textwidth]{#2}
+		\end{center}
+		\vspace{-20pt}
+		\caption{A gull}
+		\vspace{-10pt}
+		%\label{fig:gauss}
+	\end{wrapfigure}
+	\textbf{I like #1 and .}
+}
+{
+Hola, FIN!
+}
+
+
+\newcommand{\bluebox}[1]{%
+	\setbox0=\hbox{#1}%
+	\setlength{\@tempdima}{\dimexpr\wd0+13pt}%
+	\begin{tcolorbox}[colback=ocre!5!white,colframe=ocre!75!black,boxrule=0.5pt,arc=4pt,
+		left=6pt,right=6pt,top=6pt,bottom=6pt,boxsep=0pt,width=\@tempdima]
+		#1
+	\end{tcolorbox}
+}
+

@@ -1,0 +1,225 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%	Name: "Signal analysis template"
+%%	File name: marcoteran_datafusion_art
+%%
+%%	Compiler: PdfLaTex
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[conference,compsoc,onecolumn]{IEEEtran}
+
+% *** LANGUAGE UTILITY PACKAGES ***
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+%\usepackage[english]{babel}
+\usepackage[spanish]{babel}
+% *** MISC UTILITY PACKAGES ***
+\usepackage{comment}			% Agregar comentarios
+\usepackage{lipsum}				% Inserts dummy text
+\usepackage{blindtext}
+\usepackage{listings}					% Coding
+\usepackage{verbatim}				% Verbatim
+\usepackage[final]{pdfpages}
+\usepackage{booktabs,dcolumn}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{decorations.pathmorphing} % noisy shapes
+\usetikzlibrary{fit}					% fitting shapes to coordinates
+\usetikzlibrary{backgrounds}	% drawing the background after the foreground
+\pgfplotsset{compat=1.13}
+
+
+\newcommand{\mx}[1]{\mathbf{\bm{#1}}} % Matrix command
+\newcommand{\vc}[1]{\mathbf{\bm{#1}}} % Vector command
+
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{xcolor}
+
+\usepackage{pdflscape}
+%\usepackage{xcolor}% enables use of color package
+%\usepackage{colortbl}
+%\usepackage{ifpdf}
+\usepackage{afterpage}
+%\usepackage{booktabs}
+%\usepackage{enumitem}
+%\setlist[itemize]{noitemsep, nolistsep}
+
+%\usepackage[table,x11names,dvipsnames,table]{xcolor}	% \usepackage{xcolor}%Specifying colors by name
+\usepackage[bookmarks=false]{hyperref}
+%\usepackage[colorlinks=true, urlcolor=ocre]{hyperref}	% Forinserting hyperlinks (colours)
+\usepackage{tcolorbox}									% Coloured boxes, for LATEX examples and theorems, etc
+\usepackage{color}
+\usepackage{xcolor} % Required for specifying colors by name									% Color packages foreground and back­ground color man­age­men
+%\usepackage[dvipsnames]{xcolor}
+% *** CITATION PACKAGES ***
+\usepackage{cite}
+% *** GRAPHICS RELATED PACKAGES ***
+\usepackage{graphicx}
+%\usepackage{caption}
+%\usepackage{subcaption}
+%\usepackage[pdftex]{graphicx}
+%\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+%\else
+  % \usepackage[dvips]{graphicx}
+  % \graphicspath{{../eps/}}
+  % \DeclareGraphicsExtensions{.eps}
+%\fi
+% *** MATH PACKAGES ***
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{expl3}
+\usepackage{bm}
+%\usepackage{fontspec}
+%\usepackage{unicode-math}
+%\usepackage{physics}
+
+
+
+\interdisplaylinepenalty=2500
+% *** SPECIALIZED LIST PACKAGES ***
+\usepackage{algorithmic}
+% *** ALIGNMENT PACKAGES ***
+\usepackage{array}
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% *** FLOAT PACKAGES ***
+%\usepackage{fixltx2e}
+%\usepackage{stfloats}
+%\fnbelowfloat
+%\usepackage{dblfloatfix}
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+\usepackage{url}
+
+\usepackage{everypage}
+
+
+
+
+%\input{theme}
+
+\newcommand{\Lpagenumber}{\ifdim\textwidth=\linewidth\else\bgroup
+  \dimendef\margin=0
+  \ifodd\value{page}\margin=\oddsidemargin
+  \else\margin=\evensidemargin
+  \fi
+  \raisebox{\dimexpr -\topmargin-\headheight-\headsep-0.5\linewidth}[0pt][0pt]{%
+    \rlap{\hspace{\dimexpr \margin+\textheight+\footskip}%
+    \llap{\rotatebox{90}{\thepage}}}}%
+\egroup\fi}
+\AddEverypageHook{\Lpagenumber}%
+
+
+
+\hyphenation{op-tical net-works semi-conduc-tor HHMMSS}
+\graphicspath{{figures/}}
+
+\renewcommand\IEEEkeywordsname{Keywords:}
+%\definecolor{darkblue}{RGB}{0,051,102}
+\newcommand{\newtxt}[1]{\textcolor{black}{#1}}
+
+\usepackage{multirow} % In order to be able to insert rows spanning multiple lines
+
+
+%\usepackage[utf8]{inputenc} % Required for including letters with accents
+%\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage{verbatim}
+\usepackage[all]{xy}
+\usepackage{listings}
+\usepackage{subfigure}
+\usepackage{multibib}
+\usepackage{setspace} 
+\usepackage{algorithm}			    	  % To insert nice algorithms
+
+
+
+\begin{document}
+
+\tikzstyle{block} = [draw, rectangle, minimum width=6em, align=center,fill=gray!5]
+\tikzstyle{arrow} = [-latex, very thick]
+
+\newcommand*{\tran}{\top}
+
+% We need layers to draw the block diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+% Define a few styles and constants
+\tikzstyle{sensor}=[draw, fill=blue!20, text width=5em, 
+text centered, minimum height=2.5em]
+\tikzstyle{ann} = [above, text width=5em]
+\tikzstyle{naveqs} = [sensor, text width=6em, fill=red!20, minimum height=12em, rounded corners]
+\def\blockdist{2.3}
+\def\edgedist{2.5}
+
+\title{Titulo del trabajo}
+
+% author names and affiliations
+\author{\IEEEauthorblockN{Nombre~Completo}
+\IEEEauthorblockA{Escuela de Ciencias Exactas e Ingeniería\\
+	Universidad Sergio Arboleda - Bogotá, Colombia\\
+	su.correo@usa.edu.co}}
+
+\maketitle
+
+\IEEEoverridecommandlockouts
+
+
+\IEEEpeerreviewmaketitle
+
+\begin{abstract}
+Escriba aquí un resumen de su laboratorio
+\end{abstract}
+
+
+\begin{IEEEkeywords}
+    Keyword 1, Keyword 2, Keyword 3, Keyword 4.
+\end{IEEEkeywords}
+
+%\IEEEpubidadjcol
+
+\section{Marco teórico}
+\label{sec:introduction}
+Escriba aquí su marco teórico.
+
+\section{Resultados}
+\label{sec:results}
+
+
+
+
+
+
+\section{Conclusiones}
+\label{sec:conclusions}
+
+
+
+\nocite{*}
+\bibliographystyle{IEEEtran}
+%\label{sec:biblio}
+%\bibliography{bib/biblio} 
+%\input{literature}
+%\bibliographystyle{unsrt}
+%\end{thebibliography}
+
+
+
+
+
+%\pagestyle{empty}
+\end{document}
+
+

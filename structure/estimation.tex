@@ -1,0 +1,37 @@
+El problema general de estimación consiste en dado un modelo de observación,
+\begin{equation}
+	y=f(\x,\eta)
+\end{equation}
+estimar $x \in \R(n)$ de las observaciones $y \in \R(m)$ donde $\eta$ es una perturbación desconocida y $f$ es una función de \textit{mapeo} que determina el modelo).
+
+El problema de la estimación es de gran interés y extensivamente investigado en diferentes campos de aplicación del control y el procesamiento de señales \cite{Ruiz2009}.
+Dependiendo de si el modelo del entorno $f$ es lineal o no lineal, los métodos de estimación varían considerablemente. 
+Generalmente se utilizan para el primer caso, técnicas de estimación lineales o linealizadas de una sucesión de datos.
+Si $f$ es lineal, se puede expresar de la forma,
+\begin{equation}
+	\z=\mH \x+\mB \eta
+\end{equation}
+donde, $\mA$ define la relación lineal entre el parámetro desconocido $\x$ y la observación realizada $\y$;
+$\mB$ representa el modelo completo de perturbaciones del sistema. Este tipo de problemas lineales se resuelve mediante la  estimación de mínimos cuadrados (LMS \ing{Least mean squares}).\par
+%Hay razones para creer que algunos elementos de las observación son de mas confianza que otros y pueden contribuir mejor a la estimación final. Es posible modificar la LMS incluyendo una matriz de pesos diagonal $W$
+%para la discriminación de las observaciones. %Form10 Form11
+%El método de la máxima verosimilitud (MLE) utiliza un modelo de las características del ruido del sistema.\\
+%También es posible definir si hay valores que \textit{a priori} son más probables que otros, mediante la obtención de la caracterización estadística \textit{a priori} de la variable desconocida $x$.\\
+La mayoría de los métodos de fusión sensorial se basan en la regla de Bayes para la combinación de información \textit{a priori} del estado del sistema y las observaciones.
+La regla de Bayes provee un medio para hacer inferencias acerca de un objeto u entorno de interés descrito por un estado $x$, dada una observación $y$.
+Mediante la inferencia bayesiana se establece la relación entre $x$ y la medición $y$, mediante una probabilidad conjunta para variables discretas, o una PDF conjunta, $P(x,y)$ para variables aleatorias continuas.
+Si se conoce la función de densidad de probabilidad (PDF) de $x$ con anterioridad, $p(x)$, es posible utilizar los estados del teorema de Bayes,
+\begin{equation}
+	P(x|y)=\frac{P(y|x)P(x)}{P(y)}=\frac{P(y|x)P(x)}{\int{P(y|x)P(x)dx}}
+\end{equation}
+$P(y|x)$ cumple el rol de un modelo de sensor.
+Para cada valor de $x$, se define una probabilidad en $Y$.
+El argumento para máximo de una probabilidad \textit{a posteriori} estima el valor de $\hat{x}$.\par
+El problema de filtrado es un caso particular del problema de estimación generalizado.
+El cual consiste en inferir en cada instante el valor de una señal interna de un sistema dinámico, controlado por entradas conocidas y desconocidas,
+utilizando muestras de entradas y salidas presentes y pasadas.
+
+
+\subsection{El filtro de Kalman}
+\label{subsec:kalmanfilter}
+\input{kalmanfilter}

@@ -1,0 +1,17 @@
+\titlecontents{lsection}
+[5.8em]{\sffamily}
+{\color{secnum}\contentslabel{2.3em}\normalcolor}{}
+{\titlerule*[1000pc]{.}\contentspage\\\hspace*{-5.8em}\vspace*{5pt}%
+	\color{white}\rule{\dimexpr\textwidth-15.5pt\relax}{1pt}}
+
+\newcommand\PartialToC{%
+	\startcontents[chapters]%
+	\begin{mdframed}[backgroundcolor=ptcbackground,hidealllines=true]
+		\printcontents[chapters]{l}{1}{\colorbox{ptctitle}{%
+				\parbox[t]{\dimexpr\textwidth-2\fboxsep\relax}{%
+					\strut\color{white}\bfseries\sffamily\makebox[5em]{%
+						Chapter~\thechapter\hfill}Contents}}\vskip5pt}
+	\end{mdframed}%
+}
+
+
